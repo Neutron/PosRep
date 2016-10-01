@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<!--
+/** 
+ * Copyright (C) 2015 JD NEUSHUL
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ **/
+-->
+<div class="usrprof" data-ng-controller="userCtl as usrctl">
+    <div class="topspc">
+        <span>User Name:  {{usrctl.endpoint.user_id}}</span>
+        <input type="text"  data-ng-show="usrctl.editprofile" data-ng-model="usrctl.edituserid"/>
+    </div>
+ <div class="topspc">
+        <span>Network: {{usrctl.endpoint.network_id}}</span>
+        <input type="text" data-ng-show="usrctl.editprofile" data-ng-model="usrctl.editnetworkid"/>
+    </div>
+    <div class="topspc">
+        <span>Unit: {{usrctl.endpoint.map_id}}</span>
+        <input type="text" data-ng-show="usrctl.editprofile" data-ng-model="usrctl.editmapviewid"/>
+    </div>
+  
+    <div class="rtalgn">
+        <button class="smbtn" ng-click="usrctl.editProfile(usrctl.endpoint)" data-ng-hide="usrctl.editprofile">Edit</button>
+        <button class="smbtn" ng-click="usrctl.cancelEdit()" data-ng-show="usrctl.editprofile">Cancel</button>
+        <button class="smbtn" ng-click="usrctl.saveProfile()" data-ng-show="usrctl.editprofile">Save</button>
+    </div>
+     <div class="topspc"/>
+</div>

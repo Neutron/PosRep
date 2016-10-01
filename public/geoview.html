@@ -1,0 +1,146 @@
+console.error(err)<!DOCTYPE html>
+<!--
+/** 
+ * Copyright (C) 2015 JD NEUSHUL
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ **/
+-->
+<html lang="en">
+
+<head>
+    <title>PosRep</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="/node_modules/cesium/Build/Cesium/Widgets/widgets.css" />
+    <link rel="stylesheet" type="text/css" href="/node_modules/angular-material/angular-material.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Roboto'>
+    <link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/plimap.css" />
+</head>
+
+<body>
+    <div ng-app="PosRep">
+        <div ng-controller="viewCtl as vwctl">
+            <div ng-controller="mapCtl as mapctl">
+                <div ng-controller="messageCtl as msgctl">
+                    <div id="infoCol" class="noselect">
+                        <div class="accordion__container outline">
+                            <div class="accordion__tab">
+                                <div class="accordion__tab-subtitle" style="text-align:center; font-size:14px;" ng-model="mapctl.currmap" ng-click="vwctl.openTab('user')">{{mapctl.currmap}}</div>
+                                <div class="accordion__tab-content" ng-show="vwctl.isOpenTab('user')">
+                                    <div ng-include="vwctl.userProfile"></div>
+                                </div>
+                            </div>
+                            <div class="accordion__tab">
+                                <div class="accordion__tab-subtitle" ng-click="vwctl.openTab('nets')">NETWORKS</div>
+                                <div class="accordion__tab-content" ng-show="vwctl.isOpenTab('nets')">
+                                    <div ng-include="vwctl.networks"></div>
+                                </div>
+                            </div>
+                            <div class="accordion__tab">
+                                <div class="accordion__tab-sub-subtitle" ng-click="vwctl.openTab('units')">UNITS</div>
+                                <div ng-show="vwctl.isOpenTab('units')">
+                                    <div class="trcksect">
+                                        <div ng-include="vwctl.tree"></div>
+                                        <div class="trcks">
+                                            <button class="smbtn" ng-click="mapctl.newTrack(k,usrctl.endpoint.networkid,usrctl.endpoint.userid)">Add</button>
+                                            <div class="rtalgn">
+                                                <input ng-model="mapctl.editlocchecked" ng-false-value="0" type="checkbox" ng-change="mapctl.editgeofencechecked = 0" />
+                                                <span>Set Locations</span>
+                                            </div>
+                                        </div>
+                                        <div class="msect" ng-show="mapctl.editlocchecked">Right Click to Set Location</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion__tab">
+                                <div class="accordion__tab-sub-subtitle" ng-click="vwctl.openTab('GEOFENCES')">GEOFENCES</div>
+                                <div ng-show="vwctl.isOpenTab('GEOFENCES')">
+                                    <div class="trcksect">
+                                        <div ng-repeat="fnce in mapctl.geofences track by $index">
+                                            <div ng-include="vwctl.editgeofence"></div>
+                                        </div>
+                                        <div class="smbtngrp rtalgn" ng-show="mapctl.newgeofence">
+                                            <input type="text" ng-model="mapctl.editgeofencename" style="font-size:10px; margin-top:4px;" size="28"></input>
+                                            <div style="width:100%;" class="smbtngrp rtalgn">
+                                                <button class="smbtn lftbtn" ng-click="mapctl.saveGeofenceName()" ng-hide="mapctl.geoFenceExists(mapctl.editgeofencename) && mapctl.editgeofencename!==fnce._name">Save</button>
+                                                <div ng-show="mapctl.geoFenceExists(mapctl.editgeofencename) && mapctl.editgeofencename!==fnce._name" class="lftbtn" style="color:red ">Geofence Exists</div>
+                                                <button class="smbtn rtbtn" ng-click="mapctl.cancelGeofEdit()">Cancel</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="trcks">
+                                            <button class="smbtn" ng-hide="mapctl.newgeofence || mapctl.editgeofence" ng-click="mapctl.newGeofence()">Add</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion__tab">
+                                <div class="accordion__tab-subtitle" ng-click="msgctl.getMarcims(vwctl)">REPORTS</div>
+                                <div class="accordion__tab-content" ng-show="vwctl.isOpenTab('rpt')">
+                                    <div ng-include="vwctl.reportsList"></div>
+                                </div>
+                            </div>
+                            <div class="accordion__tab">
+                                <div class="accordion__tab-subtitle" ng-click="vwctl.openTab('maps')">SAVE / LOAD</div>
+                                <div class="accordion__tab-content" ng-show="vwctl.isOpenTab('maps')">
+                                    <div ng-include="vwctl.mapStore"></div>
+                                </div>
+                            </div>
+
+                            <div class="accordion__tab">
+                                <div class="accordion__tab-subtitle" ng-click="vwctl.openTab('msgs')">MESSAGE LOG</div>
+                                <div class="accordion__tab-content" ng-show="vwctl.isOpenTab('msgs')">
+                                    <div ng-include="vwctl.msgLog"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="mapctl.trackselected">
+                        <div ng-include="vwctl.info"></div>
+                    </div>
+                    <div ng-show="msgctl.rptselected">
+                        <div ng-include="vwctl.reportView"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="cesiumContainer"></div>
+    //
+    <script src="js/lib/Saxonce/Saxonce.nocache.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="js/lib/xml2json.min.js"></script>
+    //
+    <script src="/node_modules/cesium/Build/Cesium/Cesium.js"></script>
+    //
+    <script src="/node_modules/angular/angular.min.js"></script>
+    <script src="/node_modules/angular-route/angular-route.min.js"></script>
+    <script src="/node_modules/angular-aria/angular-aria.min.js"></script>
+    <script src="/node_modules/angular-messages/angular-messages.min.js"></script>
+    <script src="/node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="/node_modules/angular-material/angular-material.min.js"></script>
+    //
+    <script src="/node_modules/lz-string/libs/lz-string.min.js"></script>
+    <script src="js/lib/indexdb/angular-indexed-db.min.js"></script>
+    //
+    <script src="js/posRep.js"></script>
+    <script src="js/prServices.js"></script>
+    <script src="js/prControllers.js"></script>
+</body>
+
+</html>

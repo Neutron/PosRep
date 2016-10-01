@@ -1,0 +1,46 @@
+{
+  "name": "posrep",
+  "version": "0.0.1",
+  "description": "Tool using Cesium JavaScript library to publish position reports on a map.",
+  "homepage": "http://posrep.rhcloud.com",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Neutron/PosRep.git"
+  },
+  "main": "posrep.js",
+  "scripts": {
+    "start": "node posrep.js --public"
+  },
+  "devDependencies": {
+    "compression": "1.0.8",
+    "request": "2.36.0",
+    "socket.io-client": "1.4.x"
+  },
+  "dependencies": {
+ "angular": "^1.5.8",
+    "angular-animate": "^1.5.8",
+    "angular-aria": "^1.5.8",
+    "angular-material": "^1.1.0-rc.5",
+    "angular-messages": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "font-awesome": "^4.6.3",
+    "body-parser": "^1.13.1",
+    "cesium": "1.x",
+    "cors": "2.7.x",
+    "express": "4.10.2",
+    "socket.io": "1.4.x",
+    "yargs": "4.7.x",
+    "lz-string":"1.4.4",
+    "jsonfile":"2.3.x",
+    "xml2json":"0.10.0"
+  },
+  "author": "James Neushul",
+  "bugs": {
+    "url": "https://github.com/Neutron/PosRep/issues"
+  },
+  "directories": {
+    "doc": "doc",
+    "test": "test"
+  }
+}

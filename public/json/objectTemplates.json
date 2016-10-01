@@ -1,0 +1,206 @@
+
+{
+    "TacMapPLI Objects": {
+        "endpoint": [
+            {
+                "socket_id": "",
+                "user_id": "",
+                "network_id": "",
+                "map_id": ""
+            }
+        ],
+        "map": [
+            {
+                "id": "",
+                "name": "",
+                "url": "",
+                "data":
+                        {
+                            "Map": {
+                                "Polygons": {
+                                    "Polygon": [
+                                        {
+                                            "_id": "",
+                                            "_name": "",
+                                            "_color": "",
+                                            "_locations": ""
+                                        }
+                                    ]
+                                },
+                                "Entities": {
+                                    "Entity": {
+                                        "_id": "",
+                                        "_name": "",
+                                        "_icon": "",
+                                        "_location": ""
+                                    }
+                                },
+                                "Tracks": {
+                                    "Track": {
+                                        "_id": "",
+                                        "_name": "",
+                                        "_location": ""
+                                    }
+                                },
+                                "GeoFences": {
+                                    "GeoFence": {
+                                        "_id": "",
+                                        "_name": "",
+                                        "_locations": ""
+                                    }
+                                },
+                                "Icons": {
+                                    "Icon": [
+                                        {
+                                            "_name": "",
+                                            "_path": ""
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+            }
+        ],
+        "network": [
+            {
+                "id": "",
+                "map_id": ""
+            }
+        ],
+        "message": [
+            {
+                "time": "",
+                "network": {
+                    "id": "",
+                    "map_id": ""
+                },
+                "source": {
+                    "name": "",
+                    "socketid": ""
+                },
+                "destination": {
+                    "name": "",
+                    "socketid": ""
+                },
+                "payload": [
+                ]
+            }
+        ]
+    },
+    "IndexedDB Objects": {
+        "Resources": [
+            {
+                "name": {
+                    "url": "",
+                    "lastmod": "",
+                    "data": [
+                    ]
+                }
+            }
+        ],
+        "Maps": [
+            {
+                "name": {
+                    "url": "",
+                    "lastmod": "",
+                    "data": [
+                        {
+                            "Map": {
+                                "Polygons": {
+                                    "Polygon": [
+                                        {
+                                            "_id": "",
+                                            "_name": "",
+                                            "_color": "",
+                                            "_locations": ""
+                                        }
+                                    ]
+                                },
+                                "Entities": {
+                                    "Entity": {
+                                        "_id": "",
+                                        "_name": "",
+                                        "_icon": "",
+                                        "_location": ""
+                                    }
+                                },
+                                "Tracks": {
+                                    "Track": {
+                                        "_id": "",
+                                        "_name": "",
+                                        "_location": ""
+                                    }
+                                },
+                                "GeoFences": {
+                                    "GeoFence": {
+                                        "_id": "",
+                                        "_name": "",
+                                        "_locations": ""
+                                    }
+                                },
+                                "Icons": {
+                                    "Icon": [
+                                        {
+                                            "_name": "",
+                                            "_path": ""
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "User": [
+            {
+                "user": {
+                    "id": "",
+                    "data": [
+                        {
+                            "unit": {
+                                "uid": "",
+                                "name": "",
+                                "nation": "",
+                                "echelon": "",
+                                "role": "",
+                                "mission": "",
+                                "location": ""
+                            }
+                        },
+                        {
+                            "map": [
+                                {
+                                    "id": "",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "network": [
+                                {
+                                    "id": "",
+                                    "name": "",
+                                    "data": [
+                                        {
+                                            "map_id": "",
+                                            "netcontrol": {
+                                                "user_id": ""
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
+
+
+
+
+
+

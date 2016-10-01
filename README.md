@@ -1,15 +1,12 @@
 ### PosRep
 
-Mobile web service to show and share position information using mobile devices.
+PosRep is a browser based position reporting tool for cell phone tracking.
+
 
 ### Project Description
-* This is based on projects:
-
-* TacMap project at https://github.com/Neutron/TacMap.git
-* DEMO: http://tacmap-neushul.rhcloud.com
-
-* TacMapPLI project at https://github.com/Neutron/TacMapPLI.git
-* DEMO: http://tacmap.neushul.net
+* This tools is based on 
+* TacMap at https://github.com/Neutron/TacMap.git and 
+* TacMapPLI projects at https://github.com/Neutron/TacMapPLI.git
 
 
 ### Components Employed ###
@@ -22,3 +19,5 @@ Mobile web service to show and share position information using mobile devices.
 ### License ###
 
 [GPL 3.0](http://fsf.org/).  
+
+
